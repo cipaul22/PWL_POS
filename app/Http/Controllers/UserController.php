@@ -9,15 +9,9 @@ namespace App\Http\Controllers;
  {
      public function index()
      {   
-        $data=[
-            'level_id'=>2,
-            'username'=>'manager_tiga',
-            'nama'=>'Manager 3',
-            'password'=>Hash::make('12345')
-        ];
-        m_user::create($data);
-
-         $user = m_user::all();
+         $user = m_user::findOr(20,['username','nama'],function(){
+            abort(404);
+         });
          return view('user', ['data' => $user]);
      }
      
