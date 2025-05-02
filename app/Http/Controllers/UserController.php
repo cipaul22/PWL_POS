@@ -9,8 +9,9 @@ namespace App\Http\Controllers;
  {
      public function index()
      {   
-         $user = m_user::where('username','manager9')->firstOrFail();
-         return view('user', ['data' => $user]);
+        $count = m_user::where('level_id',2)->count();
+        
+         return view('user',compact ('count'));
      }
      
  }
