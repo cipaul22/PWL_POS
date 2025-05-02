@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = m_user::all();
+        $user = m_user::with('level')->get();
         return view('user',['data'=>$user]);
     }
 
