@@ -9,9 +9,7 @@ namespace App\Http\Controllers;
  {
      public function index()
      {   
-         $user = m_user::findOr(20,['username','nama'],function(){
-            abort(404);
-         });
+         $user = m_user::where('username','manager9')->firstOrFail();
          return view('user', ['data' => $user]);
      }
      
