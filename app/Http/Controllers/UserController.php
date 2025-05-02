@@ -9,9 +9,16 @@ namespace App\Http\Controllers;
  {
      public function index()
      {   
-        $count = m_user::where('level_id',2)->count();
-        
-         return view('user',compact ('count'));
+        $user = m_user::firstOrNew(
+            [
+                'username'=>'manager33',
+                'nama'=>'Manager Tiga Tiga',
+                'password' => Hash::make('12345'),
+                'level_id' => 2
+            ],
+        );
+        $user->save();
+        return view('user',['data'=>$user]);
      }
      
  }
