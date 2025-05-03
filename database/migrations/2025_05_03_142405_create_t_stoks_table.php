@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('t_stoks', function (Blueprint $table) {
             $table->id('stok_id');
+            $table->unsignedBigInteger('supplier_id')->index();
              $table->unsignedBigInteger('barang_id')->index();
              $table->unsignedBigInteger('user_id')->index();
              $table->dateTime('stok_tanggal');
@@ -21,6 +22,7 @@ return new class extends Migration
  
              $table->foreign('barang_id')->references('barang_id')->on('m_barangs');
              $table->foreign('user_id')->references('user_id')->on('m_users');
+             $table->foreign('supplier_id')->references('supplier_id')->on('m_suppliers');
         });
     }
 
